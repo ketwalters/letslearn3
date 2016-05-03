@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eduApp">
+  <head>
+    <title>Let's Learn!</title>
+    <link href="css/app.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="js/controllers.js"></script>
+    <style>
+      body {
+        background: url(apple.jpg) no-repeat center center fixed; 
+      }
+      form {
+        margin-left: 350px;
+        margin-top: 200px;
+      }
+      h1, #second, #result, #check {
+        font-family: 'Josefin Sans', sans-serif;
+      }
+
+      h1 {
+        font-size: 55px;
+        position: relative;
+        top: 75px;
+        text-decoration: underline;
+        left: 330px;
+      }
+
+       #first, #result, #sign, #check {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 40px;
+      }
+      #second {
+        height: 20px;
+        font-size:12pt;
+
+      }
+      #score {
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 35px;
+        position: relative;
+        top: 184px;
+        right: 138px;
+      }
+    </style>
+  </head>
+  <body ng-controller="EduAppCtrl">  
+    <h1>Let's Learn!</h1>
+    <form name="mathForm">
+        <span id="first">{{first}}</span> <span id="sign">{{sign}}</span> <input type="text" id="second" size="6" ng-model="second"/> = <span id="result">{{result}}</span>
+        <button ng-click="correct()">Submit</button>
+        <br>
+        <br>
+        <span id="check"ng-bind="Message"></span>
+        <br>
+        <span id="score">Score: {{score}}</span>
+    </form>   
+  </body>
+</html>
