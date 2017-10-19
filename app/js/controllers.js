@@ -14,7 +14,7 @@ eduApp.controller('EduAppCtrl', function($scope){
     //if first > than result then sign must be - or /
     
     if ($scope.first > $scope.result) {
-      var signs = ["-","/"];
+      var signs = ["-"];
       var randSign = signs[Math.floor(Math.random() * signs.length)];
       $scope.sign = document.getElementById("sign").innerHTML = randSign;
     }
@@ -30,11 +30,26 @@ eduApp.controller('EduAppCtrl', function($scope){
       $scope.result = a;
     }
 
+    //if sign === / result must be a multiple of first
+    if ($scope.sign === "/") {
+      mult_array = [];
+      for ( var i = 1 ; i <= 100 ; i++ ) {
+        if(i % $scope.first === 0) {
+          mult_array.push(i)
+        }
+      }
+      rand-mult = mult_array[Math.floor(Math.random() * mult_array.length)];
+      $scope.first = rand-mult;
+    }
+
+
+    /*
     if ($scope.sign === "/") {
       var num2 = Math.floor(Math.random() * 10) + 1;
       var a2 = $scope.result * num2;
-      $scope.first = a2;  
+      $scope.result = a2;  
     }
+    */
     $scope.score = 0;
     
     $scope.correct = function() {
@@ -84,7 +99,7 @@ eduApp.controller('EduAppCtrl', function($scope){
         $scope.result = document.getElementById("result").innerHTML = rand3;
 
         if ($scope.first > $scope.result) {
-          var signs = ["-","/"];
+          var signs = ["-"];
           var randSign = signs[Math.floor(Math.random() * signs.length)];
           $scope.sign = document.getElementById("sign").innerHTML = randSign;
         }
@@ -101,10 +116,22 @@ eduApp.controller('EduAppCtrl', function($scope){
         }
 
         if ($scope.sign === "/") {
+          mult_array = [];
+          for ( var i = 1 ; i <= 100 ; i++ ) {
+            if(i % $scope.first === 0) {
+              mult_array.push(i)
+            }
+          }
+          rand-mult = mult_array[Math.floor(Math.random() * mult_array.length)];
+          $scope.result = rand-mult;
+        }
+        /*
+        if ($scope.sign === "/") {
           var num2 = Math.floor(Math.random() * 10) + 1
           var a2 = $scope.result * num2;
-          $scope.first = a2;  
+          $scope.result = a2;  
         }
+        */
         $scope.score++;
       }
       $scope.second = null;
